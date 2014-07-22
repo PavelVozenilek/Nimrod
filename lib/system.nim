@@ -783,7 +783,7 @@ proc contains*[T](s: TSlice[T], value: T): bool {.noSideEffect, inline.} =
   result = s.a <= value and value <= s.b
 
 template `in` * (x, y: expr): expr {.immediate.} = contains(y, x)
-  ## Suger for contains
+  ## Sugar for contains
   ##
   ## .. code-block:: Nimrod
   ##   assert(1 in (1..3) == true)
@@ -812,11 +812,6 @@ template `isnot` *(x, y: expr): expr {.immediate.} = not (x is y)
 
 proc `of` *[T, S](x: T, y: S): bool {.magic: "Of", noSideEffect.}
   ## Checks if `x` has a type of `y`
-  ##
-  ## .. code-block:: Nimrod
-  ##   assert(EFloatingPoint is EBase)
-  ##   assert(EIO is ESystem)
-  ##   assert(EDivByZero is EBase)
 
 proc cmp*[T](x, y: T): int {.procvar.} =
   ## Generic compare proc. Returns a value < 0 iff x < y, a value > 0 iff x > y
